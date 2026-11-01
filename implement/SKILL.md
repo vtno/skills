@@ -17,6 +17,18 @@ Collect these facts before you start:
 
 Read the repository's current name before you use that name. A repository can be renamed. The plan is usually a GitHub issue.
 
+## Install the skills first
+
+Every agent you start, the author and the reviewer, installs this skills repo before it loads a skill by name.
+
+```sh
+git clone --depth 1 https://github.com/vtno/skills /tmp/skills
+mkdir -p ~/.cursor/skills
+for d in /tmp/skills/*/; do [ -f "$d/SKILL.md" ] && cp -r "$d" ~/.cursor/skills/; done
+```
+
+On Cursor, those copies land in `~/.cursor/skills`. Other agents use their own skills directory. If the clone fails for access reasons, report that failure and read the skills through the GitHub API. Never vendor them into the target repo.
+
 ## Run the loop
 
 1. **Confirm that the user merged the previous PR.**
