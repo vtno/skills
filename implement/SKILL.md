@@ -1,11 +1,11 @@
 ---
 name: implement
-description: Implement one step of a multi-PR plan, or a single PR, with an author agent. Then run a review and fix loop with a separate report-only reviewer until there are no blockers. Give the user a ready-to-merge PR link. Use when the user says "implement the next step", "do the next PR", or asks for a PR with a review loop.
+description: Implement one step of a multi-PR plan, or a single PR, with an author agent. Then run a review and fix loop with a separate report-only reviewer until no hard violation, wrong or missing requirement, or real bug remains. Give the user a ready-to-merge PR link. Use when the user says "implement the next step", "do the next PR", or asks for a PR with a review loop.
 ---
 
 # How to implement one plan step
 
-Take one plan step to a PR that has no blockers in review. The user merges. Only when the user explicitly tells you to merge, merge.
+Take one plan step to a PR with no hard violation, wrong or missing requirement, or real bug left in review. The user merges. Only when the user explicitly tells you to merge, merge.
 
 ## Collect the inputs
 
@@ -31,13 +31,13 @@ Read the repository's current name before you use that name. A repository can be
 
    Follow the [review brief](references/review-brief.md).
 
-4. **Repeat until the author agent fixes the blockers and the real bugs.**
+4. **Repeat until the required findings are gone.**
 
-   If the review lists a `BLOCKER`, send that finding and the concrete fix to the same author agent. If a `SHOULD-FIX` is a real bug, send that finding and the concrete fix to the same author agent. When the author agent pushes, run the same reviewer on the new head. The reviewer marks each previous finding fixed, partially fixed, or not fixed. Repeat both the send and the review while either a `BLOCKER` remains or a `SHOULD-FIX` is a real bug. Do not tell the user about an intermediate round.
+   Send the same author agent any finding that is a hard standards violation, a wrong or missing spec requirement, or a real bug. When that agent pushes, run the same reviewer on the new head. Tell the reviewer the previous findings so the reviewer can say which are fixed. Repeat until none of those findings remain. Do not tell the user between rounds. The reviewer must not prompt the user.
 
-5. **Handle each nit.**
+5. **Report judgement-call smells.**
 
-   If findings remain, and every one of them is a `NIT`, list those findings in the final message. Offer to fix them in the final message. Only when the user tells you to fix the `NIT` findings, fix them. When you fix them, run the same reviewer again. If the new review has a `BLOCKER`, repeat item 4. If the new review has a `SHOULD-FIX` that is a real bug, repeat item 4.
+   Report leftover judgement-call smells in the final message, and mark them optional. Fix a smell only when the user asks. When you do fix one, run the same reviewer again. If that review has a hard standards violation, a wrong or missing spec requirement, or a real bug, repeat item 4.
 
 6. **Tell the user the result.**
 
@@ -46,7 +46,7 @@ Read the repository's current name before you use that name. A repository can be
    - The PR link.
    - One or two sentences on what the PR does.
    - The final test results.
-   - Any `NIT` you did not fix, and any decision the user still has to make.
+   - Any judgement-call smell you did not fix, and any decision the user still has to make.
    - The statement that the PR is ready to merge.
    - The plan step you start after the user merges.
 

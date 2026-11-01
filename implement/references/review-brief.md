@@ -2,14 +2,9 @@
 
 Use an agent other than the author agent as the reviewer.
 
-The reviewer does not commit, comment, approve, or merge.
+The reviewer does not commit, comment, approve, or merge. The reviewer does not prompt the user.
 
-Tell the reviewer to fetch the PR and to reset the local branch to the PR head.
+Run the [code-review skill](../../code-review/SKILL.md) and follow its output format as-is. Give these inputs up front, so the reviewer does not ask:
 
-Pass the plan issue to the reviewer as the spec. The code-review skill may look for an issue tracker or a spec. Run the [code-review skill](../../code-review/SKILL.md) in `code-review/` as the review method.
-
-Run the test suite three times.
-
-Label each finding `BLOCKER`, `SHOULD-FIX`, or `NIT`. For each finding, give the file and the line as `file:line`. Give a concrete fix for that finding. End the review with the line `BLOCKERS: <n>`.
-
-Mark a hard violation, or a wrong implementation, as `BLOCKER`. Mark a partial requirement, or scope creep, as `SHOULD-FIX`. Mark a judgement-call smell as `NIT`.
+- The fixed point is the PR's base branch. Diff that base against the PR head as `base...HEAD`.
+- The spec is the plan step on the plan issue.
