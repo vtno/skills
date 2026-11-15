@@ -6,4 +6,4 @@ A loader reads `<name>/SKILL.md`. Optional detail lives in `<name>/references/` 
 
 Vendored skills are not edited locally. See [VENDORED.md](VENDORED.md). Re-sync them with `scripts/sync-vendor.sh`.
 
-Local skills are [implement](implement/SKILL.md) and [engineering-rules](engineering-rules/SKILL.md). The vendored skill list is [README.md](README.md).
+Local skills include [implement](implement/SKILL.md), [engineering-rules](engineering-rules/SKILL.md), and the video editing suite listed in [README.md](README.md).

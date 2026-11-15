@@ -1,0 +1,53 @@
+{
+  "_about": "Synthetic 9:16 example. Replace placeholder paths with project media and use the project timeline.",
+  "name": "ExampleReel",
+  "W": 1080,
+  "H": 1920,
+  "fps": 30,
+  "profile": "reel",
+  "presenter": {
+    "src": "footage/presenter.mp4",
+    "cuts": "analysis/cuts.json"
+  },
+  "audio": "audio/program_master.wav",
+  "zoom": [
+    [
+      0,
+      2,
+      "wide"
+    ],
+    [
+      2,
+      4,
+      "tight"
+    ]
+  ],
+  "inserts": [
+    {
+      "id": "example",
+      "kind": "full",
+      "t0": 2,
+      "t1": 4,
+      "trans": "cut",
+      "clips": [
+        {
+          "src": "broll/example.mp4",
+          "color": true
+        }
+      ]
+    }
+  ],
+  "text": [
+    {
+      "font": "sub",
+      "text": "Example caption",
+      "t0": 0,
+      "t1": 2,
+      "x": 540,
+      "y": 1400,
+      "size": 72,
+      "anim": "pop",
+      "keep_t1": true
+    }
+  ]
+}
